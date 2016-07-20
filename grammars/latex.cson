@@ -1,0 +1,19 @@
+'fileTypes': [
+  'tex'
+]
+'name': 'LaTeX'
+'patterns': [
+  {
+    'name': 'comment.latex'
+    'match': '(%[^\\n]*)'
+  }
+  {
+    'name': 'keyword.control.latex'
+    'match': '(\\\\documentclass)((\\[)([^\\]]*)(\\]))?((\\{)([^\\]]*)(\\}))'
+  }
+  {
+    'name': 'support.function.latex'
+    'match': '(\\\\[a-zA-Z]\\w+)'
+  }
+]
+'scopeName': 'text.tex.latex'
