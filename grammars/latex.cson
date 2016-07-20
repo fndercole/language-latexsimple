@@ -34,6 +34,18 @@
     'match': '(\\\\(?:part|chapter|section|subsection|paragraph))([^\\{]*)(\\{)([^\\}]*)(\\})'
   }
   {
+    'captures':
+      '1':
+        'name': 'support.function.environment.latex'
+      '2':
+        'name': 'punctuation.definition.arguments.begin.latex'
+      '3':
+        'name': 'entity.name.function.environment.latex'
+      '4':
+        'name': 'punctuation.definition.arguments.end.latex'
+    'match': '(\\\\(?:begin|end)(?:[^\\{]*))(\\{)([^\\}]*)(\\})'
+  }
+  {
     'name': 'support.function.latex'
     'match': '(\\\\[a-zA-Z]\\w+)'
   }
