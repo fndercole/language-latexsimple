@@ -5,7 +5,7 @@
 'patterns': [
   {
     'name': 'constant.character.escape.latex'
-    'match': '(\\\\)([%$\\[\\]\\{\\}])'
+    'match': '(\\\\)([%$\\[\\]\\{\\}\\\\])'
   }
   {
     'name': 'comment.latex'
@@ -13,11 +13,25 @@
   }
   {
     'name': 'keyword.control.latex'
-    'match': '(\\\\(documentclass))((\\[)([^\\]]*)(\\]))?((\\{)([^\\]]*)(\\}))'
+    'match': '(\\\\(documentclass))((\\[)([^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
   }
   {
     'name': 'keyword.control.include.latex'
-    'match': '(\\\\(usepackage|include|input|nobibliography|bibliography))((\\[)([^\\]]*)(\\]))?((\\{)([^\\]]*)(\\}))'
+    'match': '(\\\\(usepackage|include|input|nobibliography|bibliography))((\\[)([^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'support.function.section.latex'
+      '2':
+        'name': 'definition.parameters.section.latex'
+      '3':
+        'name': 'punctuation.support.function.section.begin.latex'
+      '4':
+        'name': 'entity.name.section.latex'
+      '5':
+        'name': 'punctuation.support.function.section.end.latex'
+    'match': '(\\\\(?:part|chapter|section|subsection|paragraph))([^\\{]*)(\\{)([^\\}]*)(\\})'
   }
   {
     'name': 'support.function.latex'
@@ -30,6 +44,18 @@
   {
     'name': 'punctuation.definition.arguments.end.latex'
     'match': '(\\})'
+  }
+  {
+    'name': 'punctuation.definition.parameters.begin.latex'
+    'match': '(\\[)'
+  }
+  {
+    'name': 'punctuation.definition.parameters.end.latex'
+    'match': '(\\])'
+  }
+  {
+    'name': 'punctuation.definition.array.latex'
+    'match': '(&)'
   }
 ]
 'scopeName': 'text.tex.latex'
