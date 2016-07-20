@@ -1,0 +1,6 @@
+'.text.tex':
+  'editor':
+    'commentStart': '% '
+'.text.tex.latex':
+  'editor':
+    'commentStart': '% '
