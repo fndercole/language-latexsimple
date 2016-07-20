@@ -4,6 +4,10 @@
 'name': 'LaTeX'
 'patterns': [
   {
+    'name': 'constant.character.escape.latex'
+    'match': '(\\\\)([%$\\[\\]\\{\\}])'
+  }
+  {
     'name': 'comment.latex'
     'match': '(%[^\\n]*)'
   }
@@ -18,6 +22,14 @@
   {
     'name': 'support.function.latex'
     'match': '(\\\\[a-zA-Z]\\w+)'
+  }
+  {
+    'name': 'punctuation.definition.arguments.begin.latex'
+    'match': '(\\{)'
+  }
+  {
+    'name': 'punctuation.definition.arguments.end.latex'
+    'match': '(\\})'
   }
 ]
 'scopeName': 'text.tex.latex'
