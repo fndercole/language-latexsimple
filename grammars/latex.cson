@@ -9,7 +9,11 @@
   }
   {
     'name': 'keyword.control.latex'
-    'match': '(\\\\documentclass)((\\[)([^\\]]*)(\\]))?((\\{)([^\\]]*)(\\}))'
+    'match': '(\\\\(documentclass))((\\[)([^\\]]*)(\\]))?((\\{)([^\\]]*)(\\}))'
+  }
+  {
+    'name': 'keyword.control.include.latex'
+    'match': '(\\\\(usepackage|include|input|nobibliography|bibliography))((\\[)([^\\]]*)(\\]))?((\\{)([^\\]]*)(\\}))'
   }
   {
     'name': 'support.function.latex'
