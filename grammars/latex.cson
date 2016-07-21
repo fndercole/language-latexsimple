@@ -2,9 +2,32 @@ fileTypes: 'tex'
 name: 'LaTeX'
 patterns: [
   # TODO: Add support for options and keywords
+  { # inline math
+    match: '(\\$)(?:[^\\$]*)(\\$)'
+    captures:
+      '0':
+        name: 'inline.math.latex'
+      '1':
+        name: 'punctuation.definition.class.inline.math.begin.latex'
+      '2':
+        name: 'punctuation.definition.class.inline.math.end.latex'
+  }
+  {
+    match: '\\\\\\[([\s\S]*)\\\\\\]'
+    name: 'display.math.latex'
+    # FIXME: Don't work
+  }
+  {
+    match: '(\\\\\\[)'
+    name: 'punctuation.definition.class.display.math.begin.latex'
+  }
+  {
+    match: '(\\\\\\])'
+    name: 'punctuation.definition.class.display.math.end.latex'
+  }
   {
     name: 'constant.character.escape.latex'
-    match: '(\\\\)([%$\\[\\]\\{\\}\\\\])'
+    match: '(\\\\)([%$\\{\\}\\\\])'
     # TODO: Add more symbols.
   }
   {
