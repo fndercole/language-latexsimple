@@ -41,14 +41,10 @@ patterns: [
         name: 'punctuation.definition.class.display.math.end.latex'
   }
   {
-    name: 'constant.character.escape.latex'
-    match: '(\\\\)([%$\\{\\}\\\\])'
-    # TODO: Add more symbols.
+    include: '#escapedChar'
   }
   {
-    name: 'comment.latex'
-    match: '(%[^\\n]*)'
-    # FIXME: Better support for comments
+    include: '#inlineComments'
   }
   {
     match: '(\\\\documentclass((\\[)(?:[^\\]]*)(\\]))?)(\\{)([^\\}]*)(\\})'
@@ -154,10 +150,38 @@ patterns: [
 repository:
   escapedChar:
     name: 'constant.character.escape.latex'
-    match: '(\\\\)([%$\\{\\}\\\\])'
+    match: '(\\\\)([%\\$\\{\\}\\\\])'
     # TODO: Add more symbols.
   inlineComments:
     name: 'comment.latex'
     match: '(%[^\\n]*)'
     # FIXME: Better support for comments
+  optionalArguments:
+    begin: '(\\[)'
+    end: '(\\])'
+    name: 'optional.arguments.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.class.optional.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.class.optional.arguments.end.latex'
+    patterns: [
+      {
+        include: '#argsKeyName'
+      }
+      {
+        include: '#argsName'
+      }
+      {
+        match: '(,)'
+        name: 'punctuation.definition.class.optional.arguments.latex'
+      }
+    ]
+  argsKeyName:
+    name: 'support.type.latex'
+    match: '([a-zA-Z0-9]+(\\s)?=(\\s)?)'
+  argsName:
+    name: 'entity.name.class.latex'
+    match: '([a-zA-Z0-9]+)'
 scopeName: 'text.tex.latex'
