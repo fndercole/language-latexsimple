@@ -12,11 +12,27 @@ patterns: [
     endCaptures:
       '1':
         name: 'punctuation.definition.class.inline.math.end.latex'
+    patterns: [
+      {
+        include: '#escapedChar'
+      }
+      {
+        include: '#inlineComments'
+      }
+    ]
   }
   { # display math
     begin: '(\\\\\\[)'
     end: '(\\\\\\])'
     name: 'display.math.latex'
+    patterns: [
+      {
+        include: '#escapedChar'
+      }
+      {
+        include: '#inlineComments'
+      }
+    ]
     beginCaptures:
       '1':
         name: 'punctuation.definition.class.display.math.begin.latex'
@@ -135,4 +151,13 @@ patterns: [
     match: '(&)'
   }
 ]
+repository:
+  escapedChar:
+    name: 'constant.character.escape.latex'
+    match: '(\\\\)([%$\\{\\}\\\\])'
+    # TODO: Add more symbols.
+  inlineComments:
+    name: 'comment.latex'
+    match: '(%[^\\n]*)'
+    # FIXME: Better support for comments
 scopeName: 'text.tex.latex'
