@@ -2,6 +2,12 @@ fileTypes: 'tex'
 name: 'LaTeX'
 patterns: [
   # TODO: Add support for options and keywords
+  { # inlineComments
+    include: '#inlineComments'
+  }
+  { # escapedChar
+    include: '#escapedChar'
+  }
   { # inline math
     begin: '(\\$)'
     end: '(\\$)'
@@ -40,30 +46,24 @@ patterns: [
       '1':
         name: 'punctuation.definition.class.display.math.end.latex'
   }
-  {
-    include: '#escapedChar'
-  }
-  {
-    include: '#inlineComments'
-  }
-  {
-    match: '(\\\\documentclass((\\[)(?:[^\\]]*)(\\]))?)(\\{)([^\\}]*)(\\})'
-    captures:
+  { # documentclass Declaration
+    begin: '(\\\\documentclass)'
+    end: '(\\{)([^\\}]*)(\\})'
+    beginCaptures:
       '1':
         name: 'support.class.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.class.arguments.begin.latex'
       '2':
-        name: 'support.class.optional.arguments.latex'
+        name: 'entity.name.class.latex'
       '3':
-        name: 'punctuation.support.class.optional.arguments.begin.latex'
-      '4':
-        name: 'punctuation.support.class.optional.arguments.end.latex'
-      '5':
-        name: 'punctuation.support.class.arguments.begin.latex'
-      '6':
-        name:
-          'entity.name.class.latex'
-      '7':
-        name: 'punctuation.support.class.arguments.end.latex'
+        name: 'punctuation.definition.class.arguments.end.latex'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
   }
   {
     # TODO: Add listings includes.
@@ -167,6 +167,9 @@ repository:
       '1':
         name: 'punctuation.definition.class.optional.arguments.end.latex'
     patterns: [
+      {
+        include: '#inlineComments'
+      }
       {
         include: '#argsKeyName'
       }
