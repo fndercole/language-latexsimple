@@ -1,73 +1,88 @@
-'fileTypes': [
-  'tex'
-]
-'name': 'LaTeX'
-'patterns': [
+fileTypes: 'tex'
+scopeName: 'text.tex.latex'
+name: 'LaTeX'
+patterns: [
   {
-    'name': 'constant.character.escape.latex'
-    'match': '(\\\\)([%$\\[\\]\\{\\}\\\\])'
+    name: 'constant.character.escape.latex'
+    match: '(\\\\)([%$\\[\\]\\{\\}\\\\])'
   }
   {
-    'name': 'comment.latex'
-    'match': '(%[^\\n]*)'
+    name: 'comment.latex'
+    match: '(%[^\\n]*)'
   }
   {
-    'name': 'keyword.control.latex'
-    'match': '(\\\\(documentclass))((\\[)([^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
-  }
-  {
-    'name': 'keyword.control.include.latex'
-    'match': '(\\\\(usepackage|include|input|nobibliography|bibliography))((\\[)([^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
-  }
-  {
-    'captures':
+    match: '(\\\\documentclass((\\[)(?:[^\\]]*)(\\]))?)(\\{)([^\\}]*)(\\})'
+    captures:
       '1':
-        'name': 'support.function.section.latex'
+        name: 'support.class.latex'
       '2':
-        'name': 'definition.parameters.section.latex'
+        name: 'support.class.optional.arguments.latex'
       '3':
-        'name': 'punctuation.support.function.section.begin.latex'
+        name: 'punctuation.support.class.optional.arguments.begin.latex'
       '4':
-        'name': 'entity.name.section.latex'
+        name: 'punctuation.support.class.optional.arguments.end.latex'
       '5':
-        'name': 'punctuation.support.function.section.end.latex'
-    'match': '(\\\\(?:part|chapter|section|subsection|paragraph))([^\\{]*)(\\{)([^\\}]*)(\\})'
+        name: 'punctuation.support.class.arguments.begin.latex'
+      '6':
+        name:
+          'entity.name.class.latex'
+      '7':
+        name: 'punctuation.support.class.arguments.end.latex'
   }
   {
-    'captures':
+    match: '(\\\\(usepackage|include|input|nobibliography|bibliography))((\\[)([^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
+    captures:
       '1':
-        'name': 'support.function.environment.latex'
+        name: 'keyword.control.include.latex'
+  }
+  {
+    captures:
+      '1':
+        name: 'support.function.section.latex'
       '2':
-        'name': 'punctuation.definition.arguments.begin.latex'
+        name: 'definition.parameters.section.latex'
       '3':
-        'name': 'entity.name.function.environment.latex'
+        name: 'punctuation.support.function.section.begin.latex'
       '4':
-        'name': 'punctuation.definition.arguments.end.latex'
-    'match': '(\\\\(?:begin|end)(?:[^\\{]*))(\\{)([^\\}]*)(\\})'
+        name: 'entity.name.section.latex'
+      '5':
+        name: 'punctuation.support.function.section.end.latex'
+    match: '(\\\\(?:part|chapter|section|subsection|paragraph))([^\\{]*)(\\{)([^\\}]*)(\\})'
   }
   {
-    'name': 'support.function.latex'
-    'match': '(\\\\[a-zA-Z]\\w+)'
+    captures:
+      '1':
+        name: 'support.function.environment.latex'
+      '2':
+        name: 'punctuation.definition.arguments.begin.latex'
+      '3':
+        name: 'entity.name.function.environment.latex'
+      '4':
+        name: 'punctuation.definition.arguments.end.latex'
+    match: '(\\\\(?:begin|end)(?:[^\\{]*))(\\{)([^\\}]*)(\\})'
   }
   {
-    'name': 'punctuation.definition.arguments.begin.latex'
-    'match': '(\\{)'
+    name: 'support.function.latex'
+    match: '(\\\\[a-zA-Z]\\w+)'
   }
   {
-    'name': 'punctuation.definition.arguments.end.latex'
-    'match': '(\\})'
+    name: 'punctuation.definition.arguments.begin.latex'
+    match: '(\\{)'
   }
   {
-    'name': 'punctuation.definition.parameters.begin.latex'
-    'match': '(\\[)'
+    name: 'punctuation.definition.arguments.end.latex'
+    match: '(\\})'
   }
   {
-    'name': 'punctuation.definition.parameters.end.latex'
-    'match': '(\\])'
+    name: 'punctuation.definition.parameters.begin.latex'
+    match: '(\\[)'
   }
   {
-    'name': 'punctuation.definition.array.latex'
-    'match': '(&)'
+    name: 'punctuation.definition.parameters.end.latex'
+    match: '(\\])'
+  }
+  {
+    name: 'punctuation.definition.array.latex'
+    match: '(&)'
   }
 ]
-'scopeName': 'text.tex.latex'
