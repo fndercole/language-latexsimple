@@ -1,5 +1,6 @@
 fileTypes: 'tex'
 name: 'LaTeX'
+firstLineMatch: '(\\\\documentclass.*)'
 patterns: [
   # TODO: Add support for options and keywords
   { # inlineComments
@@ -25,6 +26,9 @@ patterns: [
       {
         include: '#inlineComments'
       }
+      {
+        include: '#command'
+      }
     ]
   }
   { # display math
@@ -37,6 +41,9 @@ patterns: [
       }
       {
         include: '#inlineComments'
+      }
+      {
+        include: '#command'
       }
     ]
     beginCaptures:
@@ -105,28 +112,27 @@ patterns: [
       }
     ]
   }
-  {
-    match: '(\\\\(?:begin|end))((\\[)(?:[^\\]]*)(\\]))?(\\{)([^\\}]*)(\\})'
-    captures:
+  { # environments
+    begin: '(\\\\(?:begin|end))'
+    end: '(\\{)([^\\}]*)(\\})'
+    beginCaptures:
       '1':
         name: 'support.function.environment.latex'
-      '2':
-        name: 'support.function.environment.optional.arguments.latex'
-      '3':
-        name: 'punctuation.support.function.environment.optional.arguments.begin.latex'
-      '4':
-        name: 'punctuation.support.function.environment.optional.arguments.end.latex'
-      '5':
+    endCaptures:
+      '1':
         name: 'punctuation.support.function.environment.arguments.begin.latex'
-      '6':
+      '2':
         name: 'entity.name.function.environment.latex'
-      '7':
+      '3':
         name: 'punctuation.support.function.environment.arguments.end.latex'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
   }
-  {
-    # FIXME: Don't allow commands like this \alpha_a
-    match: '(\\\\[a-zA-Z]\\w+)'
-    name: 'support.function.latex'
+  { # generic commands
+    include: '#command'
   }
   {
     name: 'punctuation.support.function.optional.arguments.begin.latex'
@@ -156,7 +162,7 @@ repository:
     # TODO: Add more symbols.
   inlineComments:
     name: 'comment.latex'
-    match: '(%)([^\\n]*)'
+    match: '(%)(.*)'
     captures:
       '1':
         name: 'punctuation.definition.comment.latex'
@@ -192,4 +198,7 @@ repository:
   argsName:
     name: 'entity.name.class.latex'
     match: '([a-zA-Z0-9]+)'
+  command:
+    match: '(\\\\[a-zA-Z]+)'
+    name: 'support.function.latex'
 scopeName: 'text.tex.latex'
