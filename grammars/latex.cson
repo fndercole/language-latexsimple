@@ -51,7 +51,7 @@ patterns: [
     end: '(\\{)([^\\}]*)(\\})'
     beginCaptures:
       '1':
-        name: 'support.class.latex'
+        name: 'meta.class.latex'
     endCaptures:
       '1':
         name: 'punctuation.definition.class.arguments.begin.latex'
@@ -65,24 +65,25 @@ patterns: [
       }
     ]
   }
-  {
+  { # includes Declaration
     # TODO: Add listings includes.
-    match: '(\\\\(?:usepackage|include|includegraphics|input|nobibliography|bibliography))((\\[)(?:[^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
-    captures:
+    begin: '(\\\\(?:usepackage|include|includegraphics|input|nobibliography|bibliography))'
+    end: '(\\{)([^\\}]*)(\\})'
+    beginCaptures:
       '1':
-        name: 'keyword.control.include.latex'
+        name: 'meta.require.include.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.require.arguments.begin.latex'
       '2':
-        name: 'keyword.control.include.optional.arguments.latex'
+        name: 'entity.meta.link.latex'
       '3':
-        name: 'punctuation.keyword.control.optional.arguments.begin.latex'
-      '4':
-        name: 'punctuation.keyword.control.optional.arguments.end.latex'
-      '5':
-        name: 'punctuation.keyword.control.arguments.begin.latex'
-      '6':
-        name: 'entity.name.link.latex'
-      '7':
-        name: 'punctuation.keyword.control.arguments.end.latex'
+        name: 'punctuation.definition.require.arguments.end.latex'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
   }
   {
     # TODO: Add support for subsubsectioning and subparagraphs
