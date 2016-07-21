@@ -30,10 +30,22 @@ patterns: [
         name: 'punctuation.support.class.arguments.end.latex'
   }
   {
-    match: '(\\\\(usepackage|include|input|nobibliography|bibliography))((\\[)([^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
+    match: '(\\\\(?:usepackage|include|includegraphics|input|nobibliography|bibliography))((\\[)(?:[^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
     captures:
       '1':
         name: 'keyword.control.include.latex'
+      '2':
+        name: 'keyword.control.include.optional.arguments.latex'
+      '3':
+        name: 'punctuation.keyword.control.optional.arguments.begin.latex'
+      '4':
+        name: 'punctuation.keyword.control.optional.arguments.end.latex'
+      '5':
+        name: 'punctuation.keyword.control.arguments.begin.latex'
+      '6':
+        name: 'entity.name.link.latex'
+      '7':
+        name: 'punctuation.keyword.control.arguments.end.latex'
   }
   {
     captures:
