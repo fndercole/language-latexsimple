@@ -85,24 +85,25 @@ patterns: [
       }
     ]
   }
-  {
+  { # Headings
     # TODO: Add support for subsubsectioning and subparagraphs
-    match: '(\\\\(?:part|chapter|section|subsection|paragraph)(?:\\*)?)((\\[)(?:[^\\]]*)(\\]))?(\\{)([^\\}]*)(\\})'
-    captures:
+    begin: '(\\\\(?:title|part|chapter|section|subsection|paragraph))'
+    end: '(\\{)([^\\}]*)(\\})'
+    beginCaptures:
       '1':
         name: 'support.function.section.latex'
-      '2':
-        name: 'support.function.section.optional.arguments.latex'
-      '3':
-        name: 'punctuation.support.function.section.optional.arguments.begin.latex'
-      '4':
-        name: 'punctuation.support.function.section.optional.arguments.end.latex'
-      '5':
+    endCaptures:
+      '1':
         name: 'punctuation.support.function.section.arguments.begin.latex'
-      '6':
+      '2':
         name: 'entity.name.section.latex'
-      '7':
+      '3':
         name: 'punctuation.support.function.section.arguments.end.latex'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
   }
   {
     match: '(\\\\(?:begin|end))((\\[)(?:[^\\]]*)(\\]))?(\\{)([^\\}]*)(\\})'
