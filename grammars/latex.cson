@@ -1,13 +1,16 @@
 fileTypes: 'tex'
 name: 'LaTeX'
 patterns: [
+  # TODO: Add support for options and keywords
   {
     name: 'constant.character.escape.latex'
     match: '(\\\\)([%$\\[\\]\\{\\}\\\\])'
+    # TODO: Add more symbols.
   }
   {
     name: 'comment.latex'
     match: '(%[^\\n]*)'
+    # FIXME: Better support for comments
   }
   {
     match: '(\\\\documentclass((\\[)(?:[^\\]]*)(\\]))?)(\\{)([^\\}]*)(\\})'
@@ -47,6 +50,7 @@ patterns: [
         name: 'punctuation.keyword.control.arguments.end.latex'
   }
   {
+    # TODO: Add support for subsubsectioning and subparagraphs
     match: '(\\\\(?:part|chapter|section|subsection|paragraph)(?:\\*)?)((\\[)(?:[^\\]]*)(\\]))?(\\{)([^\\}]*)(\\})'
     captures:
       '1':
@@ -65,6 +69,7 @@ patterns: [
         name: 'punctuation.support.function.section.arguments.end.latex'
   }
   {
+    match: '(\\\\(?:begin|end)(?:[^\\{]*))(\\{)([^\\}]*)(\\})'
     captures:
       '1':
         name: 'support.function.environment.latex'
@@ -74,7 +79,6 @@ patterns: [
         name: 'entity.name.function.environment.latex'
       '4':
         name: 'punctuation.definition.arguments.end.latex'
-    match: '(\\\\(?:begin|end)(?:[^\\{]*))(\\{)([^\\}]*)(\\})'
   }
   {
     name: 'support.function.latex'
