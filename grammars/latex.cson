@@ -3,27 +3,26 @@ name: 'LaTeX'
 patterns: [
   # TODO: Add support for options and keywords
   { # inline math
-    match: '(\\$)(?:[^\\$]*)(\\$)'
-    captures:
-      '0':
-        name: 'inline.math.latex'
+    begin: '(\\$)'
+    end: '(\\$)'
+    name: 'inline.math.latex'
+    beginCaptures:
       '1':
         name: 'punctuation.definition.class.inline.math.begin.latex'
-      '2':
+    endCaptures:
+      '1':
         name: 'punctuation.definition.class.inline.math.end.latex'
   }
-  {
-    match: '\\\\\\[([\s\S]*)\\\\\\]'
+  { # display math
+    begin: '(\\\\\\[)'
+    end: '(\\\\\\])'
     name: 'display.math.latex'
-    # FIXME: Don't work
-  }
-  {
-    match: '(\\\\\\[)'
-    name: 'punctuation.definition.class.display.math.begin.latex'
-  }
-  {
-    match: '(\\\\\\])'
-    name: 'punctuation.definition.class.display.math.end.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.class.display.math.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.class.display.math.end.latex'
   }
   {
     name: 'constant.character.escape.latex'
