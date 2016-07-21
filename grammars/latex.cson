@@ -32,6 +32,7 @@ patterns: [
         name: 'punctuation.support.class.arguments.end.latex'
   }
   {
+    # TODO: Add listings includes.
     match: '(\\\\(?:usepackage|include|includegraphics|input|nobibliography|bibliography))((\\[)(?:[^\\]]*)(\\]))?((\\{)([^\\}]*)(\\}))'
     captures:
       '1':
@@ -69,36 +70,43 @@ patterns: [
         name: 'punctuation.support.function.section.arguments.end.latex'
   }
   {
-    match: '(\\\\(?:begin|end)(?:[^\\{]*))(\\{)([^\\}]*)(\\})'
+    match: '(\\\\(?:begin|end))((\\[)(?:[^\\]]*)(\\]))?(\\{)([^\\}]*)(\\})'
     captures:
       '1':
         name: 'support.function.environment.latex'
       '2':
-        name: 'punctuation.definition.arguments.begin.latex'
+        name: 'support.function.environment.optional.arguments.latex'
       '3':
-        name: 'entity.name.function.environment.latex'
+        name: 'punctuation.support.function.environment.optional.arguments.begin.latex'
       '4':
-        name: 'punctuation.definition.arguments.end.latex'
+        name: 'punctuation.support.function.environment.optional.arguments.end.latex'
+      '5':
+        name: 'punctuation.support.function.environment.arguments.begin.latex'
+      '6':
+        name: 'entity.name.function.environment.latex'
+      '7':
+        name: 'punctuation.support.function.environment.arguments.end.latex'
   }
   {
-    name: 'support.function.latex'
+    # FIXME: Don't allow commands like this \alpha_a
     match: '(\\\\[a-zA-Z]\\w+)'
+    name: 'support.function.latex'
   }
   {
-    name: 'punctuation.definition.arguments.begin.latex'
-    match: '(\\{)'
-  }
-  {
-    name: 'punctuation.definition.arguments.end.latex'
-    match: '(\\})'
-  }
-  {
-    name: 'punctuation.definition.parameters.begin.latex'
+    name: 'punctuation.support.function.optional.arguments.begin.latex'
     match: '(\\[)'
   }
   {
-    name: 'punctuation.definition.parameters.end.latex'
+    name: 'punctuation.support.function.optional.arguments.end.latex'
     match: '(\\])'
+  }
+  {
+    name: 'punctuation.support.function.arguments.begin.latex'
+    match: '(\\{)'
+  }
+  {
+    name: 'punctuation.support.function.arguments.end.latex'
+    match: '(\\})'
   }
   {
     name: 'punctuation.definition.array.latex'
