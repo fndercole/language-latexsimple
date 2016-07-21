@@ -154,7 +154,10 @@ repository:
     # TODO: Add more symbols.
   inlineComments:
     name: 'comment.latex'
-    match: '(%[^\\n]*)'
+    match: '(%)([^\\n]*)'
+    captures:
+      '1':
+        name: 'punctuation.definition.comment.latex'
     # FIXME: Better support for comments
   optionalArguments:
     begin: '(\\[)'
