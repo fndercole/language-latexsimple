@@ -1,5 +1,4 @@
 fileTypes: 'tex'
-scopeName: 'text.tex.latex'
 name: 'LaTeX'
 patterns: [
   {
@@ -48,18 +47,22 @@ patterns: [
         name: 'punctuation.keyword.control.arguments.end.latex'
   }
   {
+    match: '(\\\\(?:part|chapter|section|subsection|paragraph)(?:\\*)?)((\\[)(?:[^\\]]*)(\\]))?(\\{)([^\\}]*)(\\})'
     captures:
       '1':
         name: 'support.function.section.latex'
       '2':
-        name: 'definition.parameters.section.latex'
+        name: 'support.function.section.optional.arguments.latex'
       '3':
-        name: 'punctuation.support.function.section.begin.latex'
+        name: 'punctuation.support.function.section.optional.arguments.begin.latex'
       '4':
-        name: 'entity.name.section.latex'
+        name: 'punctuation.support.function.section.optional.arguments.end.latex'
       '5':
-        name: 'punctuation.support.function.section.end.latex'
-    match: '(\\\\(?:part|chapter|section|subsection|paragraph))([^\\{]*)(\\{)([^\\}]*)(\\})'
+        name: 'punctuation.support.function.section.arguments.begin.latex'
+      '6':
+        name: 'entity.name.section.latex'
+      '7':
+        name: 'punctuation.support.function.section.arguments.end.latex'
   }
   {
     captures:
@@ -98,3 +101,4 @@ patterns: [
     match: '(&)'
   }
 ]
+scopeName: 'text.tex.latex'
