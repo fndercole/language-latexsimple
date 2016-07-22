@@ -1,4 +1,6 @@
-'fileTypes': 'tex'
+'fileTypes': [
+  'tex'
+]
 'name': 'LaTeX'
 'firstLineMatch': '(.*)'
 'patterns': [
