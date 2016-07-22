@@ -1,9 +1,5 @@
 {
   "name": "language-latexsimple",
-  "author": {
-    "name": "Favio D'Ercole",
-    "email": "contacto@faviodercole.com.ar"
-  },
   "version": "0.1.0",
   "description": "Provides basic syntax highlighting for TeX/LaTeX files.",
   "keywords": [
@@ -12,9 +8,7 @@
     "grammar",
     "syntax"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fndercole/language-latexsimple.git"
+  "repository": "https://github.com/fndercole/language-latexsimple"
   },
   "license": "MIT",
   "engines": {
