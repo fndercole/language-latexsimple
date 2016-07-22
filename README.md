@@ -33,6 +33,7 @@ This is an alternative package for Atom editor that support LaTeX grammar syntax
   - [ ] Add escaped symbols.
   - [ ] Add special support for subsubsectioning.
   - [ ] Add suport for special pstricks commands.
+  - [ ] Add snippets.
 
 ## Warnings
 
