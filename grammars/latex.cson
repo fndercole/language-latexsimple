@@ -1,6 +1,6 @@
 fileTypes: 'tex'
 name: 'LaTeX'
-firstLineMatch: '(\\\\documentclass.*)'
+firstLineMatch: '(.*)'
 patterns: [
   # TODO: Add support for options and keywords
   { # inlineComments
