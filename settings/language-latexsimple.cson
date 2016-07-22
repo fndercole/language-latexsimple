@@ -1,6 +1,8 @@
-'.text.tex':
+'.text.tex.latex':
   'editor':
     'commentStart': '% '
-'.text.tex.latex':
+    'increaseIndentPattern': '^\\s*\\\\begin\\{.*\\}'
+    'decreaseIndentPattern': '^\\s*\\\\end(\\{.*\\})?$'
+'.text.tex':
   'editor':
     'commentStart': '% '

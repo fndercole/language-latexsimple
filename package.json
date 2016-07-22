@@ -2,7 +2,7 @@
   "name": "language-latexsimple",
   "author": {
     "name": "Favio D'Ercole",
-    "email": "contacto@gmail.com"
+    "email": "contacto@faviodercole.com.ar"
   },
   "version": "0.0.1",
   "description": "Provides basic syntax highlighting for TeX/LaTeX files.",
@@ -14,10 +14,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lee-dohm/language-generic-config.git"
+    "url": "https://github.com/fndercole/language-latexsimple.git"
   },
   "license": "MIT",
   "engines": {
-    "atom": ">=0.196.0 <2.0.0"
+    "atom": ">=1.0.0 <2.0.0"
   }
 }
