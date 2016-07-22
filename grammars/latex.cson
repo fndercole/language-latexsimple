@@ -2,7 +2,6 @@ fileTypes: 'tex'
 name: 'LaTeX'
 firstLineMatch: '(.*)'
 patterns: [
-  # TODO: Add support for options and keywords
   { # inlineComments
     include: '#inlineComments'
   }
