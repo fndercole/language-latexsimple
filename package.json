@@ -4,7 +4,7 @@
     "name": "Favio D'Ercole",
     "email": "contacto@faviodercole.com.ar"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Provides basic syntax highlighting for TeX/LaTeX files.",
   "keywords": [
     "tex",
