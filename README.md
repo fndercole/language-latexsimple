@@ -2,6 +2,8 @@
 
 This is an alternative package for Atom editor that support LaTeX grammar syntax.
 
+I use this with [Varone Dark Syntax](https://github.com/fndercole/varone-dark-syntax), which support specific selectors declared in latex.cson.
+
 ## Features
   - Identify inline comments, `% comment text`.
   - Identify multiline comments blocks, `\begin{comment} ... \end{comment}`.
