@@ -7,7 +7,7 @@
   { # include R source code
     'begin': '(% )(language: R)'
     'end': '(% end)'
-    'name': 'verbatim.multiline.latex'
+    'name': 'meta.verbatim.multiline.latex'
     'beginCaptures':
       '2':
         'name': 'markup.bold'
