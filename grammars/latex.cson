@@ -75,7 +75,7 @@
   }
   { # includes Declaration
     # TODO: Add listings includes.
-    'begin': '(\\\\(?:usepackage|include|includegraphics|input|nobibliography|bibliography))'
+    'begin': '(\\\\(?:usepackage|includegraphics|include|input|nobibliography|bibliography))'
     'end': '(\\{)([^\\}]*)(\\})'
     'beginCaptures':
       '1':
