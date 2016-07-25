@@ -82,11 +82,11 @@
         'name': 'meta.require.include.latex'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.require.arguments.begin.latex'
+        'name': 'punctuation.definition.require.begin.latex'
       '2':
         'name': 'entity.meta.link.latex'
       '3':
-        'name': 'punctuation.definition.require.arguments.end.latex'
+        'name': 'punctuation.definition.require.end.latex'
     'patterns': [
       {
         'include': '#optionalArguments'
