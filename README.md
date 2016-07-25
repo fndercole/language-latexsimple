@@ -29,6 +29,14 @@ This is an alternative package for Atom editor that support LaTeX grammar syntax
   - Identify verbatim environment blocks `\begin{verbatim} ... \end{verbatim}`.
   - Identify `[`, `]`, `{` and `}`
   - Support `*.tex` files
+  - Allow embedded R grammar throught special comments:
+    ```
+    % language: R
+      \begin{verbatim}
+        < some R code >
+      \end{verbatim}
+    % end
+    ```
 
 ## TODO's
   - [ ] Add support for other grammar into verbatim environments.
