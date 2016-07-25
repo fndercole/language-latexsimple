@@ -113,6 +113,21 @@
       }
     ]
   }
+  {
+    'begin': '(\\\\begin\\{(?:comment)\\})'
+    'end': '(\\\\end\\{(?:comment)\\})'
+    'name': 'comment.multiline.latex'
+  }
+  {
+    'begin': '(\\\\verb(\\W))'
+    'end': '(\\$2)'
+    'name': 'meta.verbatim.inline.latex'
+  }
+  {
+    'begin': '(\\\\begin\\{(?:verbatim)\\})'
+    'end': '(\\\\end\\{(?:verbatim)\\})'
+    'name': 'meta.verbatim.multiline.latex'
+  }
   { # environments
     'begin': '(\\\\(?:begin|end))'
     'end': '(\\{)([^\\}]*)(\\})'
@@ -162,7 +177,7 @@
     'match': '(\\\\)([%\\$\\{\\}\\\\])'
     # TODO: Add more symbols.
   'inlineComments':
-    'name': 'comment.latex'
+    'name': 'comment.inline.latex'
     'match': '(%)(.*)'
     'captures':
       '1':
