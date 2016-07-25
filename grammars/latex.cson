@@ -4,6 +4,23 @@
 'name': 'LaTeX'
 'firstLineMatch': '(.*)'
 'patterns': [
+  { # include R source code
+    'begin': '(% )(language: R)'
+    'end': '(% end)'
+    'name': 'verbatim.multiline.latex'
+    'beginCaptures':
+      '2':
+        'name': 'markup.bold'
+    'patterns': [
+      {
+        'match': '(\\\\(?:begin|end)\\{\\w+\\})'
+        'name': 'inline.comment.latex'
+      }
+      {
+        'include': 'source.r'
+      }
+    ]
+  }
   { # inlineComments
     'include': '#inlineComments'
   }
@@ -138,7 +155,7 @@
       '1':
         'name': 'punctuation.support.function.environment.arguments.begin.latex'
       '2':
-        'name': 'entity.name.function.environment.latex'
+        'name': 'entity.name.environment.latex'
       '3':
         'name': 'punctuation.support.function.environment.arguments.end.latex'
     'patterns': [
