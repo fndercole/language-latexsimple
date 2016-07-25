@@ -119,8 +119,8 @@
     'name': 'comment.multiline.latex'
   }
   {
-    'begin': '(\\\\verb(\\W))'
-    'end': '(\\$2)'
+    'begin': '(\\\\verb)(\\W)'
+    'end': '(\\2)'
     'name': 'meta.verbatim.inline.latex'
   }
   {
