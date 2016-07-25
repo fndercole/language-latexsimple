@@ -3,6 +3,8 @@
 This is an alternative package for Atom editor that support LaTeX grammar syntax.
 
 ## Features
+  - Identify inline comments, `% comment text`.
+  - Identify multiline comments blocks, `\begin{comment} ... \end{comment}`.
   - Identify generic comand of the form `\commad`.
   - Identify special declaration such as
     - `documentclass[<optional args>]{<class>}`
@@ -23,12 +25,13 @@ This is an alternative package for Atom editor that support LaTeX grammar syntax
   - Identify inline math `$ ... $`
   - Identify display math blocks `\[ ... \]`
   - Identify generic environment blocks `\begin{<environment>} ... \end{<environment>}`
+  - Identify `\verb|<verbatim text>|`.
+  - Identify verbatim environment blocks `\begin{verbatim} ... \end{verbatim}`.
   - Identify `[`, `]`, `{` and `}`
   - Support `*.tex` files
 
 ## TODO's
   - [ ] Add support for other grammar into verbatim environments.
-  - [ ] Add support for multiline comments.
   - [ ] Support for TeX files like `sty`, `cls` and `ltx`.
   - [ ] Add escaped symbols.
   - [ ] Add special support for subsubsectioning.
