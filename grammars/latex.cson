@@ -92,9 +92,7 @@
     # TODO: Add listings includes.
     'begin': '(\\\\(?:usepackage|includegraphics|include|input|nobibliography|bibliography))'
     'end': '(\\{)([^\\}]*)(\\})'
-    'beginCaptures':
-      '1':
-        'name': 'meta.require.include.latex'
+    'name': 'meta.require.include.latex'
     'endCaptures':
       '1':
         'name': 'punctuation.definition.require.begin.latex'
