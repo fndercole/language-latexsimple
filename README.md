@@ -33,11 +33,16 @@ I use this with [Varone Dark Syntax](https://github.com/fndercole/varone-dark-sy
   - Support `*.tex` files
   - Support `TODO` tags (`text.todo` scope) in inline comments. `% TODO: foo bar`
   - Allow embedded R grammar throught special comments:
+
     ```
     % language: R
+
       \begin{verbatim}
+
         < some R code >
+
       \end{verbatim}
+
     % end
     ```
 
