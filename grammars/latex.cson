@@ -74,9 +74,7 @@
   { # documentclass Declaration
     'begin': '(\\\\documentclass)'
     'end': '(\\{)([^\\}]*)(\\})'
-    'beginCaptures':
-      '1':
-        'name': 'meta.class.latex'
+    'name': 'meta.class.latex'
     'endCaptures':
       '1':
         'name': 'punctuation.definition.class.arguments.begin.latex'
