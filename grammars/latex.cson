@@ -240,4 +240,4 @@
   'command':
     'match': '(\\\\[a-zA-Z]+)'
     'name': 'support.function.latex'
-'scopeName': '.text.tex.latex'
+'scopeName': 'text.tex.latex'
