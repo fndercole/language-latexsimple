@@ -193,12 +193,18 @@
     'name': 'constant.character.escape.latex'
     'match': '(\\\\)([%\\$\\{\\}\\\\])'
     # TODO: Add more symbols.
-  'inlineComments':
+  'inlineComments': # TODO: Add support for TODOs tags
     'name': 'comment.inline.latex'
-    'match': '(%)(.*)'
-    'captures':
+    'begin': '(%)'
+    'end': '(\\n)'
+    'beginCaptures':
       '1':
         'name': 'punctuation.definition.comment.latex'
+    'patterns': [
+      {
+        'include': 'text.todo'
+      }
+    ]
     # FIXME: Better support for comments
   'optionalArguments':
     'begin': '(\\[)'
