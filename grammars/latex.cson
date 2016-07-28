@@ -193,11 +193,11 @@ patterns: [
   }
 ]
 repository:
-  'escapedChar':
+  escapedChar:
     name: 'constant.character.escape.latex'
     match: '(\\\\)([%\\$\\{\\}\\\\])'
     # TODO: Add more symbols.
-  'inlineComments': # TODO: Add support for TODOs tags
+  inlineComments: # TODO: Add support for TODOs tags
     name: 'comment.inline.latex'
     begin: '(%)'
     end: '(\\n)'
@@ -210,7 +210,7 @@ repository:
       }
     ]
     # FIXME: Better support for comments
-  'optionalArguments':
+  optionalArguments:
     begin: '(\\[)'
     end: '(\\])'
     name: 'optional.arguments.latex'
@@ -235,13 +235,13 @@ repository:
         name: 'punctuation.definition.class.optional.arguments.latex'
       }
     ]
-  'argsKeyName':
+  argsKeyName:
     name: 'support.type.latex'
     match: '([a-zA-Z0-9]+(\\s)?=(\\s)?)'
-  'argsName':
+  argsName:
     name: 'entity.name.class.latex'
     match: '([a-zA-Z0-9]+)'
-  'command':
+  command:
     match: '(\\\\[a-zA-Z]+)'
     name: 'support.function.latex'
 scopeName: 'text.tex.latex'
