@@ -27,6 +27,14 @@
   { # escapedChar
     'include': '#escapedChar'
   }
+  { # Lengths
+    'match': '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)'
+    'captures':
+      '1':
+        'name': 'constant.numeric.latex'
+      '2':
+        'name': 'constant.keyword.unit.latex'
+  }
   { # inline math
     'begin': '(\\$)'
     'end': '(\\$)'
@@ -126,17 +134,17 @@
       }
     ]
   }
-  {
+  { # Multiline comments
     'begin': '(\\\\begin\\{(?:comment)\\})'
     'end': '(\\\\end\\{(?:comment)\\})'
     'name': 'comment.multiline.latex'
   }
-  {
+  { # Inline verbatims
     'begin': '(\\\\verb)(\\W)'
     'end': '(\\2)'
     'name': 'meta.verbatim.inline.latex'
   }
-  {
+  { # Multiline verbatim
     'begin': '(\\\\begin\\{(?:verbatim)\\})'
     'end': '(\\\\end\\{(?:verbatim)\\})'
     'name': 'meta.verbatim.multiline.latex'
