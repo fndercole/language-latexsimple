@@ -58,4 +58,6 @@ I use this with [Varone Dark Syntax](https://github.com/fndercole/varone-dark-sy
 
 You must disable `language-latex` or `language-tex` before enable this.
 
+If you want spell checking support, install `linter-spell-latexsimple`.
+
 This software is in alpha stage of development. Please, add an issue for request a feature.
