@@ -134,6 +134,25 @@ patterns: [
       }
     ]
   }
+  { # Special commands
+    begin: '(\\\\(?:author|cite|bibentry|ref|label|paragraph|newcounter|setcounter))'
+    end: '(\\{)([^\\}]*)(\\})'
+    beginCaptures:
+      '1':
+        name: 'support.function.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+      '2':
+        name: 'variable.parameter.function.latex'
+      '3':
+        name: 'punctuation.support.function.arguments.end.latex'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
+  }
   { # Multiline comments
     begin: '(\\\\begin\\{(?:comment)\\})'
     end: '(\\\\end\\{(?:comment)\\})'
