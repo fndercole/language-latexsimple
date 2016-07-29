@@ -4,7 +4,7 @@ fileTypes: [
 name: 'LaTeX'
 firstLineMatch: '(.*)'
 patterns: [
-  { # include R source code
+  { # Include R Source Code. TODO: Generalize for any scope.
     begin: '(% )(language: R)'
     end: '(% end)'
     name: 'meta.verbatim.multiline.latex'
@@ -21,21 +21,21 @@ patterns: [
       }
     ]
   }
-  { # inlineComments
+  { # Generic Inline Comments
     include: '#inlineComments'
   }
-  { # escapedChar
+  { # Escaped characters. TODO: Add more symbols.
     include: '#escapedChar'
   }
-  { # Lengths
-    match: '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)'
-    'captures':
+  { # Lengths: number + unit
+    match: '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)\W'
+    captures:
       '1':
         name: 'constant.numeric.latex'
       '2':
         name: 'constant.keyword.unit.latex'
   }
-  { # inline math
+  { # Inline maths
     begin: '(\\$)'
     end: '(\\$)'
     name: 'inline.math.latex'
@@ -57,7 +57,7 @@ patterns: [
       }
     ]
   }
-  { # display math
+  { # Display maths
     begin: '(\\\\\\[)'
     end: '(\\\\\\])'
     name: 'display.math.latex'
@@ -96,8 +96,7 @@ patterns: [
       }
     ]
   }
-  { # includes Declaration
-    # TODO: Add listings includes.
+  { # Includes\Require Declaration. TODO: Add listings includes.
     begin: '(\\\\(?:usepackage|includegraphics|include|input|nobibliography|bibliography))'
     end: '(\\{)([^\\}]*)(\\})'
     name: 'meta.require.include.latex'
@@ -134,7 +133,7 @@ patterns: [
       }
     ]
   }
-  { # Special commands
+  { # Commands that disable spell cheking. One argument.
     begin: '(\\\\(?:author|cite|bibentry|ref|label|paragraph|newcounter|setcounter))'
     end: '(\\{)([^\\}]*)(\\})'
     beginCaptures:
@@ -163,12 +162,12 @@ patterns: [
     end: '(\\2)'
     name: 'meta.verbatim.inline.latex'
   }
-  { # Multiline verbatim
+  { # Multiline verbatim. TODO: Add support for other verbatim like enivironments.
     begin: '(\\\\begin\\{(?:verbatim)\\})'
     end: '(\\\\end\\{(?:verbatim)\\})'
     name: 'meta.verbatim.multiline.latex'
   }
-  { # environments
+  { # Environments opening and closing
     begin: '(\\\\(?:begin|end))'
     end: '(\\{)([^\\}]*)(\\})'
     beginCaptures:
@@ -187,7 +186,7 @@ patterns: [
       }
     ]
   }
-  { # generic commands
+  { # Generic commands
     include: '#command'
   }
   {
@@ -216,7 +215,7 @@ repository:
     name: 'constant.character.escape.latex'
     match: '(\\\\)([%\\$\\{\\}\\\\])'
     # TODO: Add more symbols.
-  inlineComments: # TODO: Add support for TODOs tags
+  inlineComments:
     name: 'comment.inline.latex'
     begin: '(%)'
     end: '(\\n)'
@@ -228,7 +227,6 @@ repository:
         include: 'text.todo'
       }
     ]
-    # FIXME: Better support for comments
   optionalArguments:
     begin: '(\\[)'
     end: '(\\])'
