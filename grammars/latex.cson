@@ -28,7 +28,7 @@ patterns: [
     include: '#escapedChar'
   }
   { # Lengths: number + unit
-    match: '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)\W'
+    match: '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)'
     captures:
       '1':
         name: 'constant.numeric.latex'
@@ -134,7 +134,7 @@ patterns: [
     ]
   }
   { # Commands that disable spell cheking. One argument.
-    begin: '(\\\\(?:author|cite|bibentry|ref|label|paragraph|newcounter|setcounter))'
+    begin: '(\\\\(?:author|cite|bibentry|ref|label|paragraph|newcounter|setcounter|url|(?:foreignlanguage\\{\\w*\\})))'
     end: '(\\{)([^\\}]*)(\\})'
     beginCaptures:
       '1':
