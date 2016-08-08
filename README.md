@@ -7,7 +7,7 @@ I use this with [Varone Dark Syntax](https://github.com/fndercole/varone-dark-sy
 ## Features
   - Identify inline comments, `% comment text`.
   - Identify multiline comments blocks, `\begin{comment} ... \end{comment}`.
-  - Identify generic comand of the form `\commad`.
+  - Identify generic command of the form `\command`.
   - Identify special declaration such as
     - `documentclass[<optional args>]{<class>}`
   - Identify include declarations such as
