@@ -115,7 +115,7 @@ patterns: [
   }
   { # Headings
     # TODO: Add support for subsubsectioning and subparagraphs
-    begin: '(\\\\(?:title|part|chapter|section|subsection|paragraph))'
+    begin: '(\\\\(?:title|part|chapter|section|subsection|paragraph))(?=\\W)'
     end: '(\\{)([^\\}]*)(\\})'
     beginCaptures:
       '1':
