@@ -134,7 +134,7 @@ patterns: [
     ]
   }
   { # Commands that disable spell cheking. One argument.
-    begin: '(\\\\(?:author|cite|bibentry|ref|label|paragraph|newcounter|setcounter|url|(?:foreignlanguage\\{\\w*\\})))'
+    begin: '(\\\\(?:author|alph|Alph|bibentry|cite|color|label|newcounter|ref|setcounter|url|(?:foreignlanguage\\{\\w*\\})))(?=\\W)'
     end: '(\\{)([^\\}]*)(\\})'
     beginCaptures:
       '1':
@@ -207,7 +207,7 @@ patterns: [
   }
   {
     name: 'punctuation.definition.array.latex'
-    match: '(&)'
+    match: '([&-])'
   }
 ]
 repository:
