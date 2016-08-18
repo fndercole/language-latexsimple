@@ -134,23 +134,30 @@ patterns: [
     ]
   }
   { # Commands that disable spell cheking. One argument.
-    begin: '(\\\\(?:author|alph|Alph|bibentry|cite|color|label|newcounter|ref|setcounter|url|(?:foreignlanguage\\{\\w*\\})))(?=\\W)'
-    end: '(\\{)([^\\}]*)(\\})'
+    # TODO: foreignlanguage
+    # TODO: optionalarguments
+    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\ref|\\\\setcounter|\\\\url)(\\{)'
+    end: '(\\})'
+    contentName: 'variable.parameter.function.latex'
     beginCaptures:
       '1':
-        name: 'support.function.latex'
+        name: 'punctuation.support.function.arguments.begin.latex'
     endCaptures:
       '1':
-        name: 'punctuation.support.function.arguments.begin.latex'
-      '2':
-        name: 'variable.parameter.function.latex'
-      '3':
         name: 'punctuation.support.function.arguments.end.latex'
-    patterns: [
-      {
-        include: '#optionalArguments'
-      }
-    ]
+  }
+  { # Commands that disable spell cheking. envieroment arguments
+    # TODO: foreignlanguage
+    # TODO: optionalarguments
+    begin: '(?<=\\\\begin\\{tabular\\})(\\{)'
+    end: '(\\})'
+    contentName: 'variable.parameter.function.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
   }
   { # Multiline comments
     begin: '(\\\\begin\\{(?:comment)\\})'
@@ -190,12 +197,7 @@ patterns: [
     include: '#command'
   }
   {
-    name: 'punctuation.support.function.optional.arguments.begin.latex'
-    match: '(\\[)'
-  }
-  {
-    name: 'punctuation.support.function.optional.arguments.end.latex'
-    match: '(\\])'
+    include: '#optionalArguments'
   }
   {
     name: 'punctuation.support.function.arguments.begin.latex'
