@@ -21,6 +21,23 @@ patterns: [
       }
     ]
   }
+  {# Include Shell script Source Code.
+    begin: '(% )(language: shell)'
+    end: '(% end)'
+    name: 'meta.verbatim.multiline.latex'
+    beginCaptures:
+      '2':
+        name: 'markup.bold'
+    patterns: [
+      {
+        match: '(\\\\(?:begin|end)\\{\\w+\\})'
+        name: 'inline.comment.latex'
+      }
+      {
+        include: 'source.shell'
+      }
+    ]
+  }
   { # Generic Inline Comments
     include: '#inlineComments'
   }
