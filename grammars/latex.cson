@@ -21,7 +21,7 @@ patterns: [
       }
     ]
   }
-  {# Include Shell script Source Code.
+  { # Include Shell script Source Code.
     begin: '(% )(language: shell)'
     end: '(% end)'
     name: 'meta.verbatim.multiline.latex'
@@ -41,16 +41,11 @@ patterns: [
   { # Generic Inline Comments
     include: '#inlineComments'
   }
+  { # Lengths digits + units
+    include: '#lengths'
+  }
   { # Escaped characters. TODO: Add more symbols.
     include: '#escapedChar'
-  }
-  { # Lengths: number + unit
-    match: '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)'
-    captures:
-      '1':
-        name: 'constant.numeric.latex'
-      '2':
-        name: 'constant.keyword.unit.latex'
   }
   { # Inline maths
     begin: '(\\$)'
@@ -213,7 +208,10 @@ patterns: [
   { # Generic commands
     include: '#command'
   }
-  {
+  { # pstricks Arguments
+    include: '#pstricksArguments'
+  }
+  { # Optional Arguments
     include: '#optionalArguments'
   }
   {
@@ -230,6 +228,13 @@ patterns: [
   }
 ]
 repository:
+  lengths:
+    match: '((?:\\d+\\.)?\\d+)(pt|px|ex|em|in|mm|cm)'
+    captures:
+      '1':
+        name: 'constant.numeric.latex'
+      '2':
+        name: 'constant.keyword.unit.latex'
   escapedChar:
     name: 'constant.character.escape.latex'
     match: '(\\\\)([%\\$\\{\\}\\\\])'
@@ -246,6 +251,34 @@ repository:
         include: 'text.todo'
       }
     ]
+  pstricksArguments:
+    begin: '(?<=\\\\psset)(\\{)'
+    end: '(\\})'
+    name: 'optional.arguments.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.class.optional.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.class.optional.arguments.end.latex'
+    patterns: [
+      {
+        include: '#inlineComments'
+      }
+      {
+        include: '#argsKeyName'
+      }
+      {
+        include: '#lengths'
+      }
+      {
+        include: '#argsName'
+      }
+      {
+        match: '(,)'
+        name: 'punctuation.definition.class.optional.arguments.latex'
+      }
+    ]
   optionalArguments:
     begin: '(\\[)'
     end: '(\\])'
@@ -259,6 +292,9 @@ repository:
     patterns: [
       {
         include: '#inlineComments'
+      }
+      {
+        include: '#lengths'
       }
       {
         include: '#argsKeyName'
