@@ -10,7 +10,7 @@ patterns: [
     name: 'meta.verbatim.multiline.latex'
     beginCaptures:
       '2':
-        name: 'markup.bold'
+        name: 'storage.latex'
     patterns: [
       {
         match: '(\\\\(?:begin|end)\\{\\w+\\})'
@@ -245,7 +245,7 @@ repository:
     patterns: [
       {
         match: '!TEX'
-        name: 'markup.bold'
+        name: 'storage.latex'
       }
       {
         include: 'text.todo'
