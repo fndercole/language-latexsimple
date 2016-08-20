@@ -5,19 +5,17 @@ name: 'LaTeX'
 firstLineMatch: '(.*)'
 patterns: [
   { # Include R, and Shell Source Code. TODO: Generalize for any scope.
-    begin: '(% )(language:)'
+    begin: '(% )(?=language:)'
     end: '(% end)'
     name: 'meta.verbatim.multiline.latex'
-    beginCaptures:
-      '2':
-        name: 'storage.latex'
     patterns: [
       {
-        match: '(\\\\(?:begin|end)\\{\\w+\\})'
-        name: 'inline.comment.latex'
+        match: '(language:)'
+        name: 'storage.latex'
       }
       {
-        match: '(?<=% language:) R'
+        begin: '(?<=language: )(R)'
+        end: '(?=% end)'
         patterns: [
           {
             include: 'source.r'
@@ -25,12 +23,25 @@ patterns: [
         ]
       }
       {
-        match: '(?<=% language:) sh'
+        begin: '(?<=language: )(stata)'
+        end: '(?=% end)'
+        patterns: [
+          {
+            include: 'source.stata'
+          }
+        ]
+      }
+      {
+        begin: '(?<=language: )(sh)'
+        end: '(?=% end)'
         patterns: [
           {
             include: 'source.shell'
           }
         ]
+      }
+      {
+        include: '$self'
       }
     ]
   }
