@@ -4,8 +4,8 @@ fileTypes: [
 name: 'LaTeX'
 firstLineMatch: '(.*)'
 patterns: [
-  { # Include R Source Code. TODO: Generalize for any scope.
-    begin: '(% )(language: R)'
+  { # Include R, and Shell Source Code. TODO: Generalize for any scope.
+    begin: '(% )(language:)'
     end: '(% end)'
     name: 'meta.verbatim.multiline.latex'
     beginCaptures:
@@ -17,24 +17,20 @@ patterns: [
         name: 'inline.comment.latex'
       }
       {
-        include: 'source.r'
-      }
-    ]
-  }
-  { # Include Shell script Source Code.
-    begin: '(% )(language: shell)'
-    end: '(% end)'
-    name: 'meta.verbatim.multiline.latex'
-    beginCaptures:
-      '2':
-        name: 'markup.bold'
-    patterns: [
-      {
-        match: '(\\\\(?:begin|end)\\{\\w+\\})'
-        name: 'inline.comment.latex'
+        match: '(?<=% language:) R'
+        patterns: [
+          {
+            include: 'source.r'
+          }
+        ]
       }
       {
-        include: 'source.shell'
+        match: '(?<=% language:) sh'
+        patterns: [
+          {
+            include: 'source.shell'
+          }
+        ]
       }
     ]
   }
@@ -247,6 +243,10 @@ repository:
       '1':
         name: 'punctuation.definition.comment.latex'
     patterns: [
+      {
+        match: '!TEX'
+        name: 'markup.bold'
+      }
       {
         include: 'text.todo'
       }
