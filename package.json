@@ -1,6 +1,6 @@
 {
   "name": "language-latexsimple",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Provides basic syntax highlighting for TeX/LaTeX files.",
   "keywords": [
     "tex",
