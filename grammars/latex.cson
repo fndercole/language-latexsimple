@@ -116,7 +116,7 @@ patterns: [
     ]
   }
   { # Includes\Require Declaration. TODO: Add listings includes.
-    begin: '(\\\\(?:usepackage|includegraphics|include|input|nobibliography|bibliography))'
+    begin: '(\\\\(?:usepackage|includegraphics|include|input|nobibliography|bibliography|listinginput\\{[\\s\\w]+\\}))'
     end: '(\\{)([^\\}]*)(\\})'
     name: 'meta.require.include.latex'
     endCaptures:
