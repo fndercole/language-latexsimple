@@ -60,10 +60,10 @@ patterns: [
     name: 'inline.math.latex'
     beginCaptures:
       '1':
-        name: 'punctuation.definition.class.inline.math.begin.latex'
+        name: 'punctuation.definition.class.inline.math.latex'
     endCaptures:
       '1':
-        name: 'punctuation.definition.class.inline.math.end.latex'
+        name: 'punctuation.definition.class.inline.math.latex'
     patterns: [
       {
         include: '#escapedChar'
@@ -79,6 +79,12 @@ patterns: [
   { # Display maths
     begin: '(\\\\\\[)'
     end: '(\\\\\\])'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.class.display.math.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.class.display.math.latex'
     name: 'display.math.latex'
     patterns: [
       {
@@ -91,12 +97,6 @@ patterns: [
         include: '#command'
       }
     ]
-    beginCaptures:
-      '1':
-        name: 'punctuation.definition.class.display.math.begin.latex'
-    endCaptures:
-      '1':
-        name: 'punctuation.definition.class.display.math.end.latex'
   }
   { # documentclass Declaration
     begin: '(\\\\documentclass)'
