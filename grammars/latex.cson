@@ -66,13 +66,7 @@ patterns: [
         name: 'punctuation.definition.class.inline.math.latex'
     patterns: [
       {
-        include: '#escapedChar'
-      }
-      {
-        include: '#inlineComments'
-      }
-      {
-        include: '#command'
+        include: '$self'
       }
     ]
   }
@@ -88,13 +82,50 @@ patterns: [
     name: 'display.math.latex'
     patterns: [
       {
-        include: '#escapedChar'
+        include: '$self'
       }
+    ]
+  }
+  { # Math environment
+    begin: '(\\\\begin)(\\{)((?:align|equation)(?:\\*)?)(\\})'
+    end: '(\\\\end)(\\{)(\\3)(\\})'
+    contentName: 'display.math.latex'
+    beginCaptures:
+      '1':
+        name: 'support.function.environment.latex'
+      '2':
+        name: 'punctuation.support.function.environment.arguments.begin.latex'
+      '3':
+        name: 'entity.name.environment.latex'
+      '4':
+        name: 'punctuation.support.function.environment.arguments.end.latex'
+    endCaptures:
+      '1':
+        name: 'support.function.environment.latex'
+      '2':
+        name: 'punctuation.support.function.environment.arguments.begin.latex'
+      '3':
+        name: 'entity.name.environment.latex'
+      '4':
+        name: 'punctuation.support.function.environment.arguments.end.latex'
+    patterns: [
       {
-        include: '#inlineComments'
+        include: '$self'
       }
+    ]
+  }
+  { # Math environment
+    begin: '(\\\\left(\\[|\\())'
+    end: '(\\\\right(\\]|\\())'
+    beginCaptures:
+      '1':
+        name: 'support.function.environment.latex'
+    endCaptures:
+      '1':
+        name: 'support.function.environment.latex'
+    patterns: [
       {
-        include: '#command'
+        include: '$self'
       }
     ]
   }
@@ -212,14 +243,14 @@ patterns: [
       }
     ]
   }
-  { # Generic commands
-    include: '#command'
-  }
   { # pstricks Arguments
     include: '#pstricksArguments'
   }
   { # Optional Arguments
     include: '#optionalArguments'
+  }
+  { # Generic commands
+    include: '#command'
   }
   {
     name: 'punctuation.support.function.arguments.begin.latex'
@@ -325,6 +356,6 @@ repository:
     name: 'entity.name.class.latex'
     match: '([a-zA-Z0-9]+)'
   command:
-    match: '(\\\\[a-zA-Z]+)'
+    match: '(\\\\[a-zA-Z]+|_|\\^|\\\\left\\[|\\\\right\\])'
     name: 'support.function.latex'
 scopeName: 'text.tex.latex'
