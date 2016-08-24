@@ -249,6 +249,38 @@ patterns: [
   { # Optional Arguments
     include: '#optionalArguments'
   }
+  { # Bold markup
+    begin: '(?<=\\\\textbf|\\\\mathbf)(\\{)'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    end: '(\\})'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+    contentName: 'markup.bold.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
+  }
+  {
+    begin: '(?<=\\\\textit|\\\\emph)(\\{)'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    end: '(\\})'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+    contentName: 'markup.italic.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
+  }
   { # Generic commands
     include: '#command'
   }
