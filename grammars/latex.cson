@@ -383,10 +383,10 @@ repository:
     ]
   argsKeyName:
     name: 'support.type.latex'
-    match: '([a-zA-Z0-9]+(\\s)?=(\\s)?)'
+    match: '(\\w+(\\s)?=(\\s)?)'
   argsName:
     name: 'entity.name.class.latex'
-    match: '([a-zA-Z0-9]+)'
+    match: '(\\w+)'
   command:
     match: '(\\\\[a-zA-Z]+|_|\\^|\\\\left\\[|\\\\right\\])'
     name: 'support.function.latex'
