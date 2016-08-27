@@ -237,13 +237,19 @@ patterns: [
       }
     ]
   }
-  { # pstricks Arguments
+  {# Delimeter
+    include: '#delimeter'
+  }
+  {# Generic commands
+    include: '#command'
+  }
+  { # \psset{...}
     include: '#pstricksArguments'
   }
-  { # Optional Arguments
+  { # [...]
     include: '#optionalArguments'
   }
-  { # Bold markup
+  {# {...bold...}
     begin: '(?<=\\\\textbf|\\\\mathbf)(\\{)'
     beginCaptures:
       '1':
@@ -259,7 +265,7 @@ patterns: [
       }
     ]
   }
-  {
+  {# {...italic...}
     begin: '(?<=\\\\textit|\\\\emph)(\\{)'
     beginCaptures:
       '1':
@@ -275,10 +281,7 @@ patterns: [
       }
     ]
   }
-  { # Generic commands
-    include: '#command'
-  }
-  {
+  {# {...}
     begin: '(\\{)'
     end: '(\\})'
     beginCaptures:
@@ -293,7 +296,7 @@ patterns: [
       }
     ]
   }
-  {
+  {# & -
     name: 'punctuation.definition.array.latex'
     match: '([&-])'
   }
@@ -389,6 +392,12 @@ repository:
     name: 'entity.name.class.latex'
     match: '(\\w+)'
   command:
-    match: '(\\\\[a-zA-Z@]+'
+    match: '(\\\\[a-zA-Z@]+)'
+    name: 'support.function.latex'
+  subsuper:
+    match: '(_|\\^)'
+    name: 'support.function.latex'
+  delimeter:
+    match: '(\\\\left\\[|\\\\right\\])'
     name: 'support.function.latex'
 scopeName: 'text.tex.latex'
