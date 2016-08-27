@@ -4,7 +4,7 @@ fileTypes: [
 name: 'LaTeX'
 firstLineMatch: '(.*)'
 patterns: [
-  { # Include R, and Shell Source Code. TODO: Generalize for any scope.
+  {# Include R, and Shell Source Code. TODO: Generalize for any scope.
     begin: '(% )(?=language:)'
     end: '(% end)'
     name: 'meta.verbatim.multiline.latex'
@@ -45,16 +45,16 @@ patterns: [
       }
     ]
   }
-  { # Generic Inline Comments
+  {# Generic Inline Comments
     include: '#inlineComments'
   }
-  { # Lengths digits + units
+  {# Lengths digits + units
     include: '#lengths'
   }
-  { # Escaped characters. TODO: Add more symbols.
+  {# Escaped characters. TODO: Add more symbols.
     include: '#escapedChar'
   }
-  { # Inline maths
+  {# Inline maths
     begin: '(\\$)'
     end: '(\\$)'
     name: 'inline.math.latex'
@@ -70,7 +70,7 @@ patterns: [
       }
     ]
   }
-  { # Display maths
+  {# Display maths
     begin: '(\\\\\\[)'
     end: '(\\\\\\])'
     beginCaptures:
@@ -86,7 +86,7 @@ patterns: [
       }
     ]
   }
-  { # Math environment
+  {# Math environment
     begin: '(\\\\begin)(\\{)((?:align|equation)(?:\\*)?)(\\})'
     end: '(\\\\end)(\\{)(\\3)(\\})'
     contentName: 'display.math.latex'
@@ -114,9 +114,9 @@ patterns: [
       }
     ]
   }
-  { # Math environment
-    begin: '(\\\\left(\\[|\\())'
-    end: '(\\\\right(\\]|\\())'
+  {# Math environment \left( \right)
+    begin: '(\\\\left(\\\\{|\\[|\\(|\\.))'
+    end: '(\\\\right(\\\\{|\\]|\\)|\\.))'
     beginCaptures:
       '1':
         name: 'support.function.environment.latex'
@@ -129,7 +129,7 @@ patterns: [
       }
     ]
   }
-  { # documentclass Declaration
+  {# documentclass Declaration
     begin: '(\\\\documentclass)'
     end: '(\\{)([^\\}]*)(\\})'
     name: 'meta.class.latex'
@@ -146,7 +146,7 @@ patterns: [
       }
     ]
   }
-  { # Includes\Require Declaration. TODO: Add listings includes.
+  {# Includes\Require Declaration. TODO: Add listings includes.
     begin: '(\\\\(?:usepackage|includegraphics|include|input|nobibliography|bibliography|listinginput\\{[\\s\\w]+\\}))'
     end: '(\\{)([^\\}]*)(\\})'
     name: 'meta.require.include.latex'
@@ -163,7 +163,71 @@ patterns: [
       }
     ]
   }
-  { # Headings
+  {# Inline verbatims
+    begin: '(\\\\verb)(\\W)'
+    end: '(\\2)'
+    name: 'meta.verbatim.inline.latex'
+  }
+  {# Multiline comments
+    begin: '(\\\\begin\\{(?:comment)\\})'
+    end: '(\\\\end\\{(?:comment)\\})'
+    name: 'comment.multiline.latex'
+  }
+  {# Multiline verbatim. TODO: Add support for other verbatim like enivironments.
+    begin: '(\\\\begin\\{(?:verbatim)\\})'
+    end: '(\\\\end\\{(?:verbatim)\\})'
+    name: 'meta.verbatim.multiline.latex'
+  }
+  {# Environments
+    begin: '(\\\\begin)(\\{)(\\w*\\*?)(\\})'
+    end: '(\\\\end)(\\{)(\\3)(\\})'
+    beginCaptures:
+      '1':
+        name: 'support.function.environment.latex'
+      '2':
+        name: 'punctuation.support.function.arguments.begin.latex'
+      '3':
+        name: 'entity.name.environment.latex'
+      '4':
+        name: 'punctuation.support.function.arguments.end.latex'
+    endCaptures:
+      '1':
+        name: 'support.function.environment.latex'
+      '2':
+        name: 'punctuation.support.function.arguments.begin.latex'
+      '3':
+        name: 'entity.name.environment.latex'
+      '4':
+        name: 'punctuation.support.function.arguments.end.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
+  }
+  {# Commands that disable spell cheking. One argument.
+    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\ref|\\\\setcounter|\\\\url)(\\{)'
+    end: '(\\})'
+    contentName: 'variable.parameter.function.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+  }
+  {# tabular aligments
+    begin: '(?<=\\\\begin\\{tabular\\})(\\{)'
+    end: '(\\})'
+    contentName: 'variable.parameter.function.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+  }
+  {# Headings
     # TODO: Add support for subsubsectioning and subparagraphs
     begin: '(\\\\(?:title|part|chapter|section|subsection|paragraph))(?=\\W)'
     end: '(?<=\\})'
@@ -177,73 +241,19 @@ patterns: [
       }
     ]
   }
-  { # Commands that disable spell cheking. One argument.
-    # TODO: foreignlanguage
-    # TODO: optionalarguments
-    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\ref|\\\\setcounter|\\\\url)(\\{)'
-    end: '(\\})'
-    contentName: 'variable.parameter.function.latex'
-    beginCaptures:
-      '1':
-        name: 'punctuation.support.function.arguments.begin.latex'
-    endCaptures:
-      '1':
-        name: 'punctuation.support.function.arguments.end.latex'
+  {# Delimeter
+    include: '#delimeter'
   }
-  { # Commands that disable spell cheking. envieroment arguments
-    # TODO: foreignlanguage
-    # TODO: optionalarguments
-    begin: '(?<=\\\\begin\\{tabular\\})(\\{)'
-    end: '(\\})'
-    contentName: 'variable.parameter.function.latex'
-    beginCaptures:
-      '1':
-        name: 'punctuation.support.function.arguments.begin.latex'
-    endCaptures:
-      '1':
-        name: 'punctuation.support.function.arguments.end.latex'
+  {# Generic commands
+    include: '#command'
   }
-  { # Multiline comments
-    begin: '(\\\\begin\\{(?:comment)\\})'
-    end: '(\\\\end\\{(?:comment)\\})'
-    name: 'comment.multiline.latex'
-  }
-  { # Inline verbatims
-    begin: '(\\\\verb)(\\W)'
-    end: '(\\2)'
-    name: 'meta.verbatim.inline.latex'
-  }
-  { # Multiline verbatim. TODO: Add support for other verbatim like enivironments.
-    begin: '(\\\\begin\\{(?:verbatim)\\})'
-    end: '(\\\\end\\{(?:verbatim)\\})'
-    name: 'meta.verbatim.multiline.latex'
-  }
-  { # Environments opening and closing
-    begin: '(\\\\(?:begin|end))'
-    end: '(\\{)([^\\}]*)(\\})'
-    beginCaptures:
-      '1':
-        name: 'support.function.environment.latex'
-    endCaptures:
-      '1':
-        name: 'punctuation.support.function.environment.arguments.begin.latex'
-      '2':
-        name: 'entity.name.environment.latex'
-      '3':
-        name: 'punctuation.support.function.environment.arguments.end.latex'
-    patterns: [
-      {
-        include: '#optionalArguments'
-      }
-    ]
-  }
-  { # pstricks Arguments
+  { # \psset{...}
     include: '#pstricksArguments'
   }
-  { # Optional Arguments
+  { # [...]
     include: '#optionalArguments'
   }
-  { # Bold markup
+  {# {...bold...}
     begin: '(?<=\\\\textbf|\\\\mathbf)(\\{)'
     beginCaptures:
       '1':
@@ -259,7 +269,7 @@ patterns: [
       }
     ]
   }
-  {
+  {# {...italic...}
     begin: '(?<=\\\\textit|\\\\emph)(\\{)'
     beginCaptures:
       '1':
@@ -275,10 +285,7 @@ patterns: [
       }
     ]
   }
-  { # Generic commands
-    include: '#command'
-  }
-  {
+  {# {...}
     begin: '(\\{)'
     end: '(\\})'
     beginCaptures:
@@ -293,7 +300,7 @@ patterns: [
       }
     ]
   }
-  {
+  {# & -
     name: 'punctuation.definition.array.latex'
     match: '([&-])'
   }
@@ -389,6 +396,12 @@ repository:
     name: 'entity.name.class.latex'
     match: '(\\w+)'
   command:
-    match: '(\\\\[a-zA-Z]+|_|\\^|\\\\left\\[|\\\\right\\])'
+    match: '(\\\\[a-zA-Z@]+)'
+    name: 'support.function.latex'
+  subsuper:
+    match: '(_|\\^)'
+    name: 'support.function.latex'
+  delimeter:
+    match: '(\\\\left\\[|\\\\right\\])'
     name: 'support.function.latex'
 scopeName: 'text.tex.latex'
