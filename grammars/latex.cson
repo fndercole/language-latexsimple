@@ -285,12 +285,19 @@ patterns: [
     include: '#command'
   }
   {
-    name: 'punctuation.support.function.arguments.begin.latex'
-    match: '(\\{)'
-  }
-  {
-    name: 'punctuation.support.function.arguments.end.latex'
-    match: '(\\})'
+    begin: '(\\{)'
+    end: '(\\})'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
   }
   {
     name: 'punctuation.definition.array.latex'
