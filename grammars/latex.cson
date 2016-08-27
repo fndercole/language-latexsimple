@@ -389,6 +389,6 @@ repository:
     name: 'entity.name.class.latex'
     match: '(\\w+)'
   command:
-    match: '(\\\\[a-zA-Z]+|_|\\^|\\\\left\\[|\\\\right\\])'
+    match: '(\\\\[a-zA-Z@]+'
     name: 'support.function.latex'
 scopeName: 'text.tex.latex'
