@@ -1,0 +1,9 @@
+fileTypes: [
+  'bibtex'
+]
+name: 'BibTeX'
+firstLineMatch: '(.*)'
+patterns: [
+]
+repository:
+scopeName: 'text.tex.bibtex'
