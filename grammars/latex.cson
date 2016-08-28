@@ -302,7 +302,22 @@ patterns: [
   }
   {# & -
     name: 'punctuation.definition.array.latex'
-    match: '([&-])'
+    match: '([&-\\.,])'
+  }
+  {# (...)
+    begin: '(\\()'
+    end: '(\\))'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.string.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.string.end.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
   }
 ]
 repository:
