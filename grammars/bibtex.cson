@@ -4,6 +4,122 @@ fileTypes: [
 name: 'BibTeX'
 firstLineMatch: '(.*)'
 patterns: [
+  {
+    include: "#entry"
+  }
+  {
+    include: '#comment'
+  }
 ]
 repository:
+  comment:
+    match: '(\w*)'
+    name: 'comment.bibtex'
+  var:
+    match: '(\w*)'
+    name: 'keyword.control.bibtex'
+  command:
+    match: "(\\\\[a-zA-Z@\\']+)"
+    name: 'support.function.latex.bibtex'
+  quote: # "..."
+    begin: '(\\")'
+    end: '(\\")'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.string.begin.bibtex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.string.end.bibtex'
+    patterns: [
+      {
+        include: '#group'
+      }
+      {
+        include: '#base'
+      }
+    ]
+  curly: # {...}
+    begin: '(\\{)'
+    end: '(\\})'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.string.begin.bibtex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.string.end.bibtex'
+    patterns: [
+      {
+        include: '#group'
+      }
+      {
+        include: '#command'
+      }
+    ]
+  group: # {...}
+    begin: '(\\{)'
+    end: '(\\})'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.bibtex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.bibtex'
+    patterns: [
+      {
+        include: '#group'
+      }
+      {
+        include: '#command'
+      }
+    ]
+  key: # jones99,
+    match: '(?<=\\{)([^=]*)(,)'
+    captures:
+      '1':
+        name: 'variable.bibtex'
+      '2':
+        name: 'punctuation.definition.array.latex'
+  tag: # title = {...},
+    begin: '([^=]+(\\s)?=(\\s)?)'
+    end: '(,)'
+    beginCaptures:
+      '1':
+        name: 'support.type.bibtex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.array.latex'
+    patterns: [
+      {
+        match: '([\\#])'
+        name: 'keyword.operator.bibtex'
+      }
+      {
+        include: '#curly'
+      }
+      {
+        include: '#quote'
+      }
+      {
+        include: '#var'
+      }
+    ]
+  entry: # @misc
+    begin: '(\\@\\w+)(\\s+)?(\\{)'
+    end: '(\\})'
+    beginCaptures:
+      '1':
+        name: 'storage.bibtex'
+      '3':
+        name: 'punctuation.support.function.arguments.begin.bibtex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.bibtex'
+    patterns: [
+      {
+        include: '#key'
+      }
+      {
+        include: '#tag'
+      }
+    ]
 scopeName: 'text.tex.bibtex'

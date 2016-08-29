@@ -1,10 +1,11 @@
 {
   "name": "language-latexsimple",
   "version": "0.10.0",
-  "description": "Provides basic syntax highlighting for TeX/LaTeX files.",
+  "description": "Provides basic syntax highlighting for TeX/LaTeX and BibTeX files.",
   "keywords": [
     "tex",
     "latex",
+    "bibtex",
     "grammar",
     "syntax"
   ],

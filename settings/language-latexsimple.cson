@@ -1,4 +1,6 @@
 '.text.tex.latex':
   'editor':
     'commentStart': '% '
-    
+'.text.tex.bibtex':
+  'editor':
+    'commentStart': '% '
