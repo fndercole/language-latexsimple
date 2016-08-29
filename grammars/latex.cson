@@ -1,8 +1,10 @@
 fileTypes: [
   'tex'
+  'cls'
+  'sty'
 ]
 name: 'LaTeX'
-firstLineMatch: '(.*)'
+#firstLineMatch: '(.*)'
 patterns: [
   {# Include R, and Shell Source Code. TODO: Generalize for any scope.
     begin: '(% )(?=language:)'

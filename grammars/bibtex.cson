@@ -2,7 +2,7 @@ fileTypes: [
   'bibtex'
 ]
 name: 'BibTeX'
-firstLineMatch: '(.*)'
+#firstLineMatch: '(.*)'
 patterns: [
   {
     include: "#entry"
