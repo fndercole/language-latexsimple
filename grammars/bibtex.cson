@@ -1,5 +1,6 @@
 fileTypes: [
   'bibtex'
+  'bib'
 ]
 name: 'BibTeX'
 #firstLineMatch: '(.*)'
