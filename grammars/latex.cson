@@ -4,7 +4,6 @@ fileTypes: [
   'sty'
 ]
 name: 'LaTeX'
-#firstLineMatch: '(.*)'
 patterns: [
   {# Include R, and Shell Source Code. TODO: Generalize for any scope.
     begin: '(% )(?=language:)'
@@ -228,6 +227,26 @@ patterns: [
     endCaptures:
       '1':
         name: 'punctuation.support.function.arguments.end.latex'
+  }
+  {# tabularx aligments
+    begin: '(?<=\\\\begin\\{tabularx\\})(\\{[^\\}]*\\})(\\{)'
+    end: '(\\})'
+    contentName: 'variable.parameter.function.latex'
+    beginCaptures:
+      '1':
+        patterns: [
+          include: '$self'
+        ]
+      '2':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
   }
   {# Headings
     # TODO: Add support for subsubsectioning and subparagraphs
