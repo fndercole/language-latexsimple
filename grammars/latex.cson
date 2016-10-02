@@ -207,7 +207,18 @@ patterns: [
     ]
   }
   {# Commands that disable spell cheking. One argument.
-    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\ref|\\\\setcounter|\\\\url)(\\{)'
+    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\ref|\\\\pageref|\\\\setcounter|\\\\url)(\\{)'
+    end: '(\\})'
+    contentName: 'variable.parameter.function.latex'
+    beginCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.support.function.arguments.end.latex'
+  }
+  {# Commands that disable spell cheking. Two arguments.
+    begin: '(?<=\\\\multicolumn\\{\\d\\})(\\{)'
     end: '(\\})'
     contentName: 'variable.parameter.function.latex'
     beginCaptures:
@@ -227,6 +238,11 @@ patterns: [
     endCaptures:
       '1':
         name: 'punctuation.support.function.arguments.end.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
   }
   {# tabularx aligments
     begin: '(?<=\\\\begin\\{tabularx\\})(\\{[^\\}]*\\})(\\{)'
