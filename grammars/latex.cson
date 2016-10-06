@@ -207,7 +207,7 @@ patterns: [
     ]
   }
   {# Commands that disable spell cheking. One argument.
-    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\ref|\\\\pageref|\\\\setcounter|\\\\url)(\\{)'
+    begin: '(?<=\\\\author|\\\\alph|\\\\Alph|\\\\bibentry|\\\\cite|\\\\color|\\\\label|\\\\newcounter|\\\\pagestyle|\\\\ref|\\\\pageref|\\\\setcounter|\\\\url)(\\{)'
     end: '(\\})'
     contentName: 'variable.parameter.function.latex'
     beginCaptures:
