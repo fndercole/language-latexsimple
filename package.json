@@ -1,6 +1,6 @@
 {
   "name": "language-latexsimple",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "author": "Favio D'Ercole contacto@faviodercole.com.ar",
   "description": "Provides basic syntax highlighting for TeX/LaTeX and BibTeX files.",
   "keywords": [
