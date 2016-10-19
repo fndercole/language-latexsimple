@@ -46,7 +46,7 @@ patterns: [
       }
     ]
   }
-  {
+  {# Smart Comments for disable spell cheking
     begin: '(% )(disable spell)'
     beginCaptures:
       '1':
@@ -301,11 +301,23 @@ patterns: [
   {# Delimeter
     include: '#delimeter'
   }
+  {# Generic commands with optional args
+    include: '#commandWithOptArgs'
+  }
   {# Generic commands
     include: '#command'
   }
   { # \psset{...}
     include: '#pstricksArguments'
+  }
+  {# optionalArguments
+    begin: '(?<=\\})(?=\\[)'
+    end: '(?<=\\])'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
   }
   {# (...), [...), (...], [...]
     begin: '(\\(|\\[)'
@@ -321,9 +333,6 @@ patterns: [
         include: '$self'
       }
     ]
-  }
-  { # [...]
-    include: '#optionalArguments'
   }
   {# {...bold...}
     begin: '(?<=\\\\textbf|\\\\mathbf)(\\{)'
@@ -470,6 +479,17 @@ repository:
   command:
     match: '(\\\\[a-zA-Z@]+)'
     name: 'support.function.latex'
+  commandWithOptArgs:
+    begin: '(\\\\[a-zA-Z@]+)(?=\\[)'
+    end: '(?<=\\])'
+    beginCaptures:
+      '1':
+        name: 'support.function.latex'
+    patterns: [
+      {
+        include: '#optionalArguments'
+      }
+    ]
   subsuper:
     match: '(_|\\^)'
     name: 'support.function.latex'
