@@ -46,6 +46,26 @@ patterns: [
       }
     ]
   }
+  {
+    begin: '(% )(disable spell)'
+    beginCaptures:
+      '1':
+        name: 'comment.inline.latex'
+      '2':
+        name: 'storage.latex'
+    end: '(% )(enable spell)'
+    endCaptures:
+      '1':
+        name: 'comment.inline.latex'
+      '2':
+        name: 'storage.latex'
+    name: 'disablespellchecking.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
+  }
   {# Generic Inline Comments
     include: '#inlineComments'
   }
@@ -287,6 +307,21 @@ patterns: [
   { # \psset{...}
     include: '#pstricksArguments'
   }
+  {# (...), [...), (...], [...]
+    begin: '(\\(|\\[)'
+    end: '(\\)|\\])'
+    beginCaptures:
+      '1':
+        name: 'punctuation.definition.string.begin.latex'
+    endCaptures:
+      '1':
+        name: 'punctuation.definition.string.end.latex'
+    patterns: [
+      {
+        include: '$self'
+      }
+    ]
+  }
   { # [...]
     include: '#optionalArguments'
   }
@@ -340,21 +375,6 @@ patterns: [
   {# & -
     name: 'punctuation.definition.array.latex'
     match: '([&-\\.,])'
-  }
-  {# (...)
-    begin: '(\\()'
-    end: '(\\))'
-    beginCaptures:
-      '1':
-        name: 'punctuation.definition.string.begin.latex'
-    endCaptures:
-      '1':
-        name: 'punctuation.definition.string.end.latex'
-    patterns: [
-      {
-        include: '$self'
-      }
-    ]
   }
 ]
 repository:
